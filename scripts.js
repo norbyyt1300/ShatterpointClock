@@ -75,6 +75,7 @@ function padTime(time) {
 
 // Start/Stop logic for Player 1
 function togglePlayer1() {
+    if (isPlayer2Turn) return;  // Do nothing if someone clicks the player 1 clock while its player 2's turn
     if (isPaused) return; // Do nothing if paused
     navigator.vibrate(200);
     if (player1Timer) {
@@ -89,7 +90,10 @@ function togglePlayer1() {
     }
 }
 
+var isPlayer1Turn = false;
 function startPlayer1() {
+    isPlayer1Turn = true;
+    isPlayer2Turn = false;
     if (player1Timer) return;
     player1Timer = setInterval(() => {
         if (player1Time > 0) {
@@ -109,6 +113,7 @@ function stopPlayer1() {
 
 // Start/Stop logic for Player 2
 function togglePlayer2() {
+    if (isPlayer1Turn) return;  // Do nothing if someone clicks the player 2 clock while its player 1's turn
     if (isPaused) return; // Do nothing if paused
     navigator.vibrate(200);
     if (player2Timer) {
@@ -123,7 +128,10 @@ function togglePlayer2() {
     }
 }
 
+var isPlayer2Turn = false;
 function startPlayer2() {
+    isPlayer1Turn = false;
+    isPlayer2Turn = true;
     if (player2Timer) return;
     player2Timer = setInterval(() => {
         if (player2Time > 0) {
@@ -155,7 +163,7 @@ function togglePause() {
     if (isPaused) {
         // Resume the clock
         isPaused = false;
-        document.getElementById("pauseBtn").innerHTML = "&#x23F8";
+        document.getElementById("pauseBtn").innerHTML = "&#x23F8"; // Pause icon
         if (currentTimer === "player1") {
             startPlayer1();
         } else if (currentTimer === "player2") {
@@ -164,7 +172,7 @@ function togglePause() {
     } else {
         // Pause the clock
         isPaused = true;
-        document.getElementById("pauseBtn").innerHTML = "&#x23F5";
+        document.getElementById("pauseBtn").innerHTML = "&#9654"; // Play icon
         clearInterval(player1Timer);
         clearInterval(player2Timer);
         player1Timer = null;
