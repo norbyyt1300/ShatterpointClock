@@ -76,6 +76,7 @@ function padTime(time) {
 // Start/Stop logic for Player 1
 function togglePlayer1() {
     if (isPaused) return; // Do nothing if paused
+    navigator.vibrate(200);
     if (player1Timer) {
         // Stop Player 1's clock
         clearInterval(player1Timer);
@@ -109,6 +110,7 @@ function stopPlayer1() {
 // Start/Stop logic for Player 2
 function togglePlayer2() {
     if (isPaused) return; // Do nothing if paused
+    navigator.vibrate(200);
     if (player2Timer) {
         // Stop Player 2's clock
         clearInterval(player2Timer);
