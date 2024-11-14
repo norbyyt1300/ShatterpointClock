@@ -8,6 +8,8 @@ let player2Timer = null;
 let isPaused = false;   // Track if the clock is paused
 let currentTimer = null;
 
+const timeUpAudio = new Audio('timeup.mp3');
+
 saveSettings();
 
 // Saves settings from the settings modeal
@@ -62,6 +64,7 @@ function updatePlayerMissionCriticalTimeClockHTML(elementId, playerTime) {
         var html = padTime(minutes) + ":" + padTime(seconds);
         element.innerHTML = html;
         element.style.color = "black";
+        element.style.backgroundColor = "pink";
     } else {
         element.innerHTML = padTime(missionCriticalTimeMinutes) + ":00";
         element.style.color = "gray";
@@ -101,6 +104,7 @@ function startPlayer1() {
             updateClock();
         } else {
             stopPlayer1();
+            timeUpAudio.play();
             alert("Player 1's time is up!");
         }
     }, 1000);
@@ -139,6 +143,7 @@ function startPlayer2() {
             updateClock();
         } else {
             stopPlayer2();
+            timeUpAudio.play();
             alert("Player 2's time is up!");
         }
     }, 1000);
