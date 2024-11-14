@@ -172,3 +172,27 @@ function togglePause() {
 
 // Initial clock update
 updateClock();
+
+
+
+
+
+
+
+
+
+var noSleep = new NoSleep();
+
+var wakeLockEnabled = false;
+var toggleEl = document.querySelector("#toggle");
+toggleEl.addEventListener('click', function() {
+    if (!wakeLockEnabled) {
+        noSleep.enable(); // keep the screen on!
+        wakeLockEnabled = true;
+        toggleEl.style.backgroundColor = "green";
+    } else {
+        noSleep.disable(); // let the screen turn off.
+        wakeLockEnabled = false;
+        toggleEl.style.backgroundColor = "";
+    }
+}, false);
