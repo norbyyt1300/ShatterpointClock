@@ -41,28 +41,30 @@ function updateClock() {
 
 // Generate HTML for a player's clock, given the minutes and seconds remaining
 function updatePlayerRegularTimeClockHTML(elementId, playerTime) {
+    var element = document.getElementById(elementId);
     if (playerTime <= missionCriticalTimeMinutes * 60) {
-        document.getElementById(elementId).style.color = "gray";
-        document.getElementById(elementId).innerHTML = "00:00";
+        element.innerHTML = "00:00";
+        element.style.color = "gray";
     } else {
         var minutes = Math.floor((playerTime - 60 * missionCriticalTimeMinutes) / 60);
         var seconds = playerTime % 60;
         var html = padTime(minutes) + ":" + padTime(seconds);
-        document.getElementById(elementId).innerHTML = html;
-        document.getElementById(elementId).style.color = "black";
+        element.innerHTML = html;
+        element.style.color = "black";
     }
 }
 
 function updatePlayerMissionCriticalTimeClockHTML(elementId, playerTime) {
+    var element = document.getElementById(elementId);
     if (playerTime <= missionCriticalTimeMinutes * 60) {
         var minutes = Math.floor((playerTime) / 60);
         var seconds = playerTime % 60;
         var html = padTime(minutes) + ":" + padTime(seconds);
-        document.getElementById(elementId).innerHTML = html;
-        document.getElementById(elementId).style.color = "black";
+        element.innerHTML = html;
+        element.style.color = "black";
     } else {
-        document.getElementById(elementId).style.color = "gray";
-        document.getElementById(elementId).innerHTML = padTime(missionCriticalTimeMinutes) + ":00";
+        element.innerHTML = padTime(missionCriticalTimeMinutes) + ":00";
+        element.style.color = "gray";
     }
 }
 
