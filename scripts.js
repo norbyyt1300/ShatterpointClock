@@ -105,6 +105,7 @@ function startPlayer1() {
         } else {
             stopPlayer1();
             timeUpAudio.play();
+            navigator.vibrate(2000);
             alert("Player 1's time is up!");
         }
     }, 1000);
@@ -144,6 +145,7 @@ function startPlayer2() {
         } else {
             stopPlayer2();
             timeUpAudio.play();
+            navigator.vibrate(2000);
             alert("Player 2's time is up!");
         }
     }, 1000);
