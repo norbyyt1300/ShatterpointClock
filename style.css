@@ -1,0 +1,37 @@
+#settingsTd {
+    width: 50px;
+}
+
+#logoImg {
+    width: 60px;
+}
+
+.clockTd {
+    font-size: 90px;
+}
+
+#player1Clock {
+    background-color: aliceblue;
+    color: black;
+}
+
+#player2Clock {
+    background-color: tan;
+    color: black;
+}
+
+#player1Time, #player2Time {
+
+}
+
+.regularTimeLabelDiv {
+    font-size: 20px;
+}
+
+.missionCriticalLabelDiv {
+    font-size: 20px;
+}
+
+.myButton {
+    width: 48px;
+}
