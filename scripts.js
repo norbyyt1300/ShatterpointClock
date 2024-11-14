@@ -190,6 +190,10 @@ toggleEl.addEventListener('click', function() {
         noSleep.enable(); // keep the screen on!
         wakeLockEnabled = true;
         toggleEl.style.backgroundColor = "green";
+
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        }
     } else {
         noSleep.disable(); // let the screen turn off.
         wakeLockEnabled = false;
